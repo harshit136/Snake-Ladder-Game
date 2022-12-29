@@ -2,6 +2,7 @@ package com.example.snakeladder;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 public class SnakeLadder extends Application {
     public static final int tileSize=40,height=10,width=10;
+    int lowerLine=tileSize*height+10;
     Pane createContent(){
         Pane root=new Pane();
         root.setPrefSize(width*tileSize,height*tileSize+50);
@@ -30,7 +32,13 @@ public class SnakeLadder extends Application {
         boardImage.setFitWidth(tileSize*width);
         boardImage.setFitWidth(tileSize*height);
 
-        root.getChildren().add(boardImage);
+        Button playerOneButton=new Button("Player One");
+        playerOneButton.setTranslateX(20);
+        playerOneButton.setTranslateY(lowerLine+20);
+        Button playerTwoButton=new Button("Player Two");
+        playerTwoButton.setTranslateX(250);
+        playerTwoButton.setTranslateY(lowerLine+20);
+        root.getChildren().addAll(boardImage, playerOneButton, playerTwoButton);
         return root;
     }
     @Override
